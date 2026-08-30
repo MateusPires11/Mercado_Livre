@@ -85,22 +85,25 @@ const products = [
     }
 ];
 
-
-
-function cardsprodutos(product){
+function cardsprodutos(products){
     return`
-        <div>
-            <img>
-            <h3></h3>
-        </div>
-    
-    
+        <div class="cardsprodutos">
+
+            <img src="${products.image}" alt="${products.title}" class="imgproduto">
+            <h3 class="tituloproduto">${products.title}</h3>
+            <div class="preco">${products.price}</div>
+            <div class="disconto">${products.discount}</div>
+
+        </div>    
     `
+}
+function renderizarproduto(){
+    const grid = document.getElementById('produtos-grid')
+    grid.innerHTML = products.map(cardsprodutos).join('')
+}
 
-} 
 
 
-
-document.addEventListener('DOMContentLoaded' ()=>{
-
+document.addEventListener('DOMContentLoaded', () => {
+    renderizarproduto(products)
 })
