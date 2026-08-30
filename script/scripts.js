@@ -85,25 +85,43 @@ const products = [
     }
 ];
 
-function cardsprodutos(products){
-    return`
+function formatarpreco(price) {
+    return price.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })
+
+}
+
+
+function cardsprodutos(products) {
+    return `
         <div class="cardsprodutos">
 
             <img src="${products.image}" alt="${products.title}" class="imgproduto">
             <h3 class="tituloproduto">${products.title}</h3>
-            <div class="preco">${products.price}</div>
-            <div class="disconto">${products.discount}</div>
+            <div class="preco">${formatarpreco(products.price)}</div>
+            <div class="disconto">${products.discount}% OFF</div>
 
         </div>    
     `
 }
-function renderizarproduto(){
+function renderizarproduto(lista) {
     const grid = document.getElementById('produtos-grid')
-    grid.innerHTML = products.map(cardsprodutos).join('')
+    grid.innerHTML = lista.map(cardsprodutos).join('')
 }
 
-
+function pesquisar() {
+    const input = document.getElementById('input-pesquisa').value.toLowerCase()
+    const filtro = products.filter(product => product.title.toLowerCase().includes(input))
+    renderizarproduto(filtro)
+}
 
 document.addEventListener('DOMContentLoaded', () => {
     renderizarproduto(products)
+
+    document.getElementById('btn-busca').addEventListener("click", pesquisar)
+    
+    document.getElementById('input-pesquisa').addEventListener('keydown', (event) => {
+        if (event.key === 'Enter') {
+            pesquisar()
+        }
+    })
 })
