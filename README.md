@@ -2,6 +2,10 @@
 
 Um clone simplificado da página inicial do Mercado Livre, feito com HTML, CSS e JavaScript puro (vanilla JS), como projeto de estudo.
 
+## 🌐 Demo
+
+Veja o projeto ao vivo: [mateuspires11.github.io/Mercado_Livre](https://mateuspires11.github.io/Mercado_Livre/)
+
 ## 🚀 Funcionalidades
 
 - Header com logo e campo de busca
